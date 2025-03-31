@@ -1,13 +1,19 @@
-import {Image, View, Text, StyleSheet} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
+import {Avatar, ListItem} from '@rneui/themed';
 
 export default function SittingMember({ name, image }) {
-    const defaultImage = "https://blogs.mathworks.com/images/steve/87/default_image_story_01.jpg";
-    const imageUrl = image && image.url ? image.url : defaultImage;
     return (
-        <View style={styles.container}>
-            <Text style={styles.name}>{name}</Text>
-            <Image source={{ uri: imageUrl }} style={styles.image} />
-        </View>
+        <ListItem >
+            <Avatar
+                size={64}
+                rounded
+                source={image && typeof image.url === "string" ?
+                    { uri: image.url } : require("../assets/default_image_story_01.jpg")} // In case image is null
+            />
+            <ListItem.Content>
+                <ListItem.Title>{name}</ListItem.Title>
+            </ListItem.Content>
+        </ListItem>
     );
 }
 
@@ -27,10 +33,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
         marginRight: 10,
-    },
-    image: {
-        width: 50,
-        height: 50,
-        borderRadius: 25,
     }
 });
