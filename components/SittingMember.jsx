@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet} from "react-native";
 import {Avatar, ListItem} from '@rneui/themed';
 
 export default function SittingMember({ name, image }) {

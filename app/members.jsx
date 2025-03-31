@@ -3,7 +3,7 @@ import {Button, FlatList, SafeAreaView, Text, TouchableOpacity, View} from "reac
 import SittingMember from "../components/SittingMember";
 import {useRouter} from "expo-router";
 
-export default function MembersScreen() {
+export default function MembersScreen(props) {
     const [members, setMembers] = useState(null);
     const router = useRouter();
 
@@ -36,7 +36,10 @@ export default function MembersScreen() {
                     data={members}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) => (
-                        <TouchableOpacity onPress={() => router.push(`/members/${item.id}`)}>
+                        <TouchableOpacity onPress={() => router.push(
+                            { pathname: `/members/${item.id}`,
+                                params: { id: `${item.id}`} })}
+                        >
                             <SittingMember name={item.name} image={item.image} />
                         </TouchableOpacity>
                     )}
