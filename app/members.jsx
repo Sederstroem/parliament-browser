@@ -36,10 +36,7 @@ export default function MembersScreen(props) {
                     data={members}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) => (
-                        <TouchableOpacity onPress={() => router.push(
-                            { pathname: `/members/${item.id}`,
-                                params: { id: `${item.id}`} })}
-                        >
+                        <TouchableOpacity onPress={() => router.push(`/members/${item.id}`)}>
                             <SittingMember name={item.name} image={item.image} />
                         </TouchableOpacity>
                     )}
