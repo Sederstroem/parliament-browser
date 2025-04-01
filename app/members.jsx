@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import {Button, FlatList, SafeAreaView, Text, TouchableOpacity, View} from "react-native";
-import SittingMember from "../components/SittingMember";
 import {useRouter} from "expo-router";
+import SittingMember from "../components/SittingMember";
+import SearchComponent from "../components/SearchComponent";
 
 export default function MembersScreen(props) {
     const [members, setMembers] = useState(null);
@@ -31,6 +32,12 @@ export default function MembersScreen(props) {
         <SafeAreaView>
                 <Text>Every seating member</Text>
                 <Button title={"Home Page"} onPress={() => router.push("/")}></Button>
+            <SearchComponent suggestions={[
+                { id: "1", name: "Affe" },
+                { id: "2", name: "John" }
+            ]}>
+
+            </SearchComponent>
             <View>
                 <FlatList
                     data={members}
